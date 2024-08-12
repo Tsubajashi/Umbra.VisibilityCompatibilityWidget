@@ -44,7 +44,7 @@ public class VisibilityCompatibility(
 
     protected override void OnUpdate()
     {
-        base.OnUpdate();
+
     }
 
     private void SwitchVisibilityState ()
