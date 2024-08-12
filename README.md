@@ -4,7 +4,7 @@ A plugin to use the plugin Visibility via Umbra widget.
 
 ## Installation
 
-- Download the **.dll** file of this repos [here](https://github.com/LightRob/Umbra.VisibilityCompatibilityWidget/tree/main/out/Release).
+- Download the **.dll** file of this repos [here](https://github.com/LightRob/Umbra.VisibilityCompatibilityWidget/releases).
 - Open Umbra Setting in FFXIV and go to **Plugins** page.
 - Click on **Add Plugin** and find the .dll you downloaded earlier.
 - Reload Umbra
