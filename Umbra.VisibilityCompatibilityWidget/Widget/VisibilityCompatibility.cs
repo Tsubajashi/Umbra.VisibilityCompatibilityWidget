@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Umbra.Widgets;
 using Umbra.Common;
 using Dalamud.Plugin.Services;
@@ -28,7 +28,25 @@ public class VisibilityCompatibility(
 
     protected override IEnumerable<IWidgetConfigVariable> GetConfigVariables()
     {
-        return [];
+        return [
+            new BooleanWidgetConfigVariable(
+               "Decorate",
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Description"),
+                true) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
+            new BooleanWidgetConfigVariable(
+                "DesaturateIcon",
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Description"),
+                false) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
+            new IntegerWidgetConfigVariable(
+                "IconSize",
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Description"),
+                0,
+                0,
+                42) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") }
+        ];
     }
 
     protected override void Initialize()
@@ -44,7 +62,10 @@ public class VisibilityCompatibility(
 
     protected override void OnUpdate()
     {
-
+        SetGhost(!GetConfigValue<bool>("Decorate"));
+        LeftIconNode.Style.ImageGrayscale = GetConfigValue<bool>("DesaturateIcon");
+        SetIconSize(GetConfigValue<int>("IconSize"));
+        
     }
 
     private void SwitchVisibilityState ()
