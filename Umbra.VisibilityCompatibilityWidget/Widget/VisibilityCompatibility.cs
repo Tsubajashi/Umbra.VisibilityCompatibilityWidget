@@ -8,10 +8,11 @@ using FFXIVClientStructs.FFXIV.Common.Component.BGCollision;
 
 namespace Umbra.VisibilityCompatibility.Widgets;
 
-[ToolbarWidget(
+[InteropToolbarWidget(
     "VisibilityCompatibility",
     "Visibility Widget",
-    "A widget for Visibility plugin."
+    "A widget for Visibility plugin.",
+    "Visibility"
 )]
 public class VisibilityCompatibility(
     WidgetInfo                  info,
