@@ -24,7 +24,7 @@
   <PropertyGroup>
     <Authors>Your Name</Authors>
     <Company>Sample Company</Company>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.1.1</Version>
     <Description>A description</Description>
     <Copyright>(C)2024</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
