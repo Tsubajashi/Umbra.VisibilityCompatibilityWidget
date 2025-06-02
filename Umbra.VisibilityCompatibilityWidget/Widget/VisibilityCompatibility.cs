@@ -18,7 +18,7 @@ public class VisibilityCompatibility(
     WidgetInfo                  info,
     string?                     guid         = null,
     Dictionary<string, object>? configValues = null
-) : DefaultToolbarWidget(info, guid, configValues)
+) : StandardToolbarWidget(info, guid, configValues)
 {
     public bool enabled = false;
     public override MenuPopup? Popup { get; } = null;
@@ -50,7 +50,7 @@ public class VisibilityCompatibility(
         ];
     }
 
-    protected override void Initialize()
+    protected new void Initialize()
     {
         SetLeftIcon(60647);
         SetLabel(null);
@@ -61,7 +61,7 @@ public class VisibilityCompatibility(
         Node.OnRightClick += _ => OpenVisibilityConfig();
     }
 
-    protected override void OnUpdate()
+    protected new void OnUpdate()
     {
         SetGhost(!GetConfigValue<bool>("Decorate"));
         LeftIconNode.Style.ImageGrayscale = GetConfigValue<bool>("DesaturateIcon");
