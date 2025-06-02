@@ -26,6 +26,10 @@ public class VisibilityCompatibility(
     private readonly IChatSender _chatSender = Framework.Service<IChatSender>();
 
     private IToastGui ToastGui { get; set; } = Framework.Service<IToastGui>();
+    protected override StandardWidgetFeatures Features =>
+        StandardWidgetFeatures.Text |
+        StandardWidgetFeatures.Icon |
+        StandardWidgetFeatures.CustomizableIcon;
 
     protected override IEnumerable<IWidgetConfigVariable> GetConfigVariables()
     {
