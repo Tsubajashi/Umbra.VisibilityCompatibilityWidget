@@ -18,7 +18,7 @@ public class VisibilityCompatibility(
     WidgetInfo                  info,
     string?                     guid         = null,
     Dictionary<string, object>? configValues = null
-) : DefaultToolbarWidget(info, guid, configValues)
+) : StandardToolbarWidget(info, guid, configValues)
 {
     public bool enabled = false;
     public override MenuPopup? Popup { get; } = null;
