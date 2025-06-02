@@ -18,7 +18,7 @@ public class VisibilityCompatibility(
     WidgetInfo                  info,
     string?                     guid         = null,
     Dictionary<string, object>? configValues = null
-) : StandardToolbarWidget(info, guid, configValues)
+) : DefaultToolbarWidget(info, guid, configValues)
 {
     public bool enabled = false;
     public override MenuPopup? Popup { get; } = null;
@@ -27,35 +27,30 @@ public class VisibilityCompatibility(
 
     private IToastGui ToastGui { get; set; } = Framework.Service<IToastGui>();
 
-    protected override StandardWidgetFeatures Features =>
-        StandardWidgetFeatures.Text |
-        StandardWidgetFeatures.Icon |
-        StandardWidgetFeatures.CustomizableIcon;
-
     protected override IEnumerable<IWidgetConfigVariable> GetConfigVariables()
     {
         return [
             new BooleanWidgetConfigVariable(
                "Decorate",
-                I18N.Translate("Widgets.CustomButton.Config.Label.Name"),
-                I18N.Translate("Widgets.CustomButton.Config.Label.Description"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Description"),
                 true) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
             new BooleanWidgetConfigVariable(
                 "DesaturateIcon",
-                I18N.Translate("Widgets.CustomButton.Config.DesaturateIcon.Name"),
-                I18N.Translate("Widgets.CustomButton.Config.DesaturateIcon.Description"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Description"),
                 false) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
             new IntegerWidgetConfigVariable(
                 "IconSize",
-                I18N.Translate("Widgets.CustomButton.Config.IconSize.Name"),
-                I18N.Translate("Widgets.CustomButton.Config.IconSize.Description"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Name"),
+                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Description"),
                 0,
                 0,
                 42) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") }
         ];
     }
 
-    protected new void Initialize()
+    protected override void Initialize()
     {
         SetLeftIcon(60647);
         SetLabel(null);
@@ -66,7 +61,7 @@ public class VisibilityCompatibility(
         Node.OnRightClick += _ => OpenVisibilityConfig();
     }
 
-    protected new void OnUpdate()
+    protected override void OnUpdate()
     {
         SetGhost(!GetConfigValue<bool>("Decorate"));
         LeftIconNode.Style.ImageGrayscale = GetConfigValue<bool>("DesaturateIcon");
