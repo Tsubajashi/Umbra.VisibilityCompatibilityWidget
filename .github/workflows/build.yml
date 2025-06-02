@@ -1,5 +1,12 @@
 name: Publish
 on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Tags to publish'
+        required: true
+        default: '*'
+
   push:
     tags: ["*"]
 
