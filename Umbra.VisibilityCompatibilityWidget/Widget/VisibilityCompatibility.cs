@@ -27,23 +27,28 @@ public class VisibilityCompatibility(
 
     private IToastGui ToastGui { get; set; } = Framework.Service<IToastGui>();
 
+    protected override StandardWidgetFeatures Features =>
+        StandardWidgetFeatures.Text |
+        StandardWidgetFeatures.Icon |
+        StandardWidgetFeatures.CustomizableIcon;
+
     protected override IEnumerable<IWidgetConfigVariable> GetConfigVariables()
     {
         return [
             new BooleanWidgetConfigVariable(
                "Decorate",
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Name"),
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.Decorate.Description"),
+                I18N.Translate("Widgets.CustomButton.Config.Label.Name"),
+                I18N.Translate("Widgets.CustomButton.Config.Label.Description"),
                 true) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
             new BooleanWidgetConfigVariable(
                 "DesaturateIcon",
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Name"),
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.DesaturateIcon.Description"),
+                I18N.Translate("Widgets.CustomButton.Config.DesaturateIcon.Name"),
+                I18N.Translate("Widgets.CustomButton.Config.DesaturateIcon.Description"),
                 false) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") },
             new IntegerWidgetConfigVariable(
                 "IconSize",
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Name"),
-                I18N.Translate("Widgets.DefaultToolbarWidget.Config.IconSize.Description"),
+                I18N.Translate("Widgets.CustomButton.Config.IconSize.Name"),
+                I18N.Translate("Widgets.CustomButton.Config.IconSize.Description"),
                 0,
                 0,
                 42) { Category = I18N.Translate("Widget.ConfigCategory.WidgetAppearance") }
